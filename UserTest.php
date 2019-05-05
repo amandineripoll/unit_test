@@ -1,61 +1,37 @@
 <?php
 
-require 'Entity/User.php';
+require 'User.php';
 
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
 
-	private $user;
-
-	/**
-	* @covers User::isValid
-	*/
-	public function testisValidNominal()
+	protected $user;
+	
+	public function testIsValid()
 	{
-		$result = $this->user->isValid();
-		$this->assertTrue($result);
-	}
-
-	/**
-	* @covers User::isValid
-	*/
-	public function testIsNotActiveBecauseEmailFormat()
-	{
-		$this->user->setEmail("test.fr");
-		$result = $this->user->isValid();
-		$this->assertFalse($result);
+		$user = new User("Amandine", "Ripoll","amandine-ripoll@blabla.fr", 23);
+		$this->assertEquals(1, $user->isValid());
 	}	
 
-	/**
-	* @covers User::isValid
-	*/
-	public function testIsNotActiveBecauseFirstnameIsInvalid()
+	public function testFirstname()
 	{
-		$this->user->setFirstname("");
-		$result = $this->user->isValid();
-		$this->assertFalse($result);
+		$user = new User("", "Ripoll", "amandine-ripoll@blabla.fr", 23);
+		$this->assertEquals(0, $user->isValid());
 	}
 
-	/**
-	* @covers User::isValid
-	*/
-	public function testIsNotActiveBecauseToYoung()
+	public function testEmail()
 	{
-		$this->user->setAge(9);
-		$result = $this->user->isValid();
-		$this->assertFalse($result);
+		$user = new User("Am", "Ripoll", "amandablar",  23);
+		$this->assertEquals(0, $user->isValid());
 	}
 
-	protected function setUp() : void
+	public function testAge()
 	{
-		$this->user = new User("test@test.fr", "toto", "toto", 20);
+		$user = new User("Am", "Ripoll", "amandine-ripoll@blabla.fr", 12);
+		$this->assertEquals(0, $user->isValid());
 	}
+
 	
-	protected function tearDown() : void
-	{
-		$this->user = NULL;
-	}
-
 }

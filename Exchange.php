@@ -1,6 +1,8 @@
 <?php
 
 require 'Product.php';
+require 'EmailSender.php';
+require 'DBConnection.php';
 
 class Exchange extends Product {
 
@@ -55,4 +57,5 @@ $end = "2019-06-27";
 $begin = "2019-05-15";
 $exchange = new Exchange($userReceiver, $product, $userOwner, $begin, $end);
 print $exchange->save();
+// && $this->BeginningDate < $this->EndingDate
 //(new DateTime()->format('Y-m-d') < $this->BeginningDate)q

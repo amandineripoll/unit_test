@@ -20,6 +20,10 @@ class Product extends User {
     public function setUser($user){
         $this->user = $user;
     }
+    
+    public function getUser(){
+        return $this->user;
+    }
 
     public function isValid(){
         if($this->user->isValid() && (!empty($this->name)))

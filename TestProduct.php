@@ -1,34 +1,36 @@
 <?php
 
+require 'Product.php';
 
 use PHPUnit\Framework\TestCase;
-require 'Entity/User.php';
-require 'Entity/Product.php';
 
-class ProductTest extends TestCase
+class TestProduct extends TestCase
 {
     protected $product;
-
-    protected function setUp(): void
-    {
-        $user = new User("benjamin", "kazmierczak", "test@test.fr", 23);
-
-        $this->product = new Product("object", $user);
-    }
+    protected $user;
 
     public function testIsValid() {
-        $this->assertEquals(true, $this->product->isValid());
+        $user = new User("Amandine", "Ripoll","amandine-ripoll@blabla.fr", 23);
+        $product = new Product("chaise", $user);
+        $this->assertEquals(1, $product->isValid());
     }
 
-
-    public function testInvalid() {
-        $this->product->setName("");
-        $this->assertEquals(false, $this->product->isValid());
+    public function testInvalidProductName() {
+        $user = new User("Amandine", "Ripoll","amandine-ripoll@blabla.fr", 23);
+        $product = new Product("", $user);
+        $this->assertEquals(0, $product->isValid());
     }
 
-    public function testInvalidOwner() {
-        $this->product->getUser()->setAge(1);
-        $this->assertEquals(false, $this->product->isValid());
+    public function testInvalidOwnerAge() {
+        $user = new User("Amandine", "Ripoll","amandine-ripoll@blabla.fr", 10);
+        $product = new Product("Chaise", $user);
+        $this->assertEquals(0, $product->isValid());
+    }
+
+    public function testInvalidOwnerEmail() {
+        $user = new User("Amandine", "Ripoll","amandine-r.fr", 16);
+        $product = new Product("Chaise", $user);
+        $this->assertEquals(0, $product->isValid());
     }
 
 }
