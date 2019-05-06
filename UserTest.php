@@ -1,6 +1,7 @@
 <?php
 
 require 'User.php';
+require './vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -21,6 +22,12 @@ class UserTest extends TestCase
 		$this->assertEquals(0, $user->isValid());
 	}
 
+	public function testLastname()
+	{
+		$user = new User("Amandine", "", "amandine-ripoll@blabla.fr", 23);
+		$this->assertEquals(0, $user->isValid());
+	}
+
 	public function testEmail()
 	{
 		$user = new User("Am", "Ripoll", "amandablar",  23);
@@ -33,5 +40,4 @@ class UserTest extends TestCase
 		$this->assertEquals(0, $user->isValid());
 	}
 
-	
 }

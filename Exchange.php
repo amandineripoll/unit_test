@@ -42,20 +42,33 @@ class Exchange extends Product {
     $this->EndingDate = $EndingDate;
    }
 
-   public function save(){
-        if($this->receiver->isValid() && $this->product->isValid() && $this->BeginningDate < $this->EndingDate)
+   public function isValid(){
+        if($this->receiver->isValid() && $this->product->isValid() && $this->BeginningDate < date('Y-m-d') && date('Y-m-d') < $this->EndingDate){
             return 1;
-        else
+        }
+        else{
             return 0;
+        }
+    }
+
+   public function save(){
+    if($this->isValid()){
+        try{
+            DBConnection::saveExchange($this);
+        }
+        catch(Exception $e){
+            echo $e;
+        }
+        }
     }
 }
 
-$userOwner = new User("dd", "dd", "amadd@dmail.r", 15);
-$userReceiver = new User("aa", "aa", "amadd@dmail.r", 25);
-$product = new Product("chaise", $userOwner);
-$end = "2019-06-27";
-$begin = "2019-05-15";
-$exchange = new Exchange($userReceiver, $product, $userOwner, $begin, $end);
-print $exchange->save();
+// $userOwner = new User("dd", "dd", "amadd@dmail.r", 15);
+// $userReceiver = new User("aa", "aa", "amadd@dmail.r", 25);
+// $product = new Product("chaise", $userOwner);
+// $end = "2019-06-27";
+// $begin = "2019-05-15";
+// $exchange = new Exchange($userReceiver, $product, $userOwner, $begin, $end);
+// print $exchange->save();
 // && $this->BeginningDate < $this->EndingDate
 //(new DateTime()->format('Y-m-d') < $this->BeginningDate)q

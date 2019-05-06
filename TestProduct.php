@@ -1,8 +1,10 @@
 <?php
 
 require 'Product.php';
+require './vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
+
 
 class TestProduct extends TestCase
 {

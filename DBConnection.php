@@ -1,6 +1,6 @@
 <?php
 
-class DatabaseConnection
+class DBConnection
 {
 
 	function __construct()
