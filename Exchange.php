@@ -43,7 +43,7 @@ class Exchange extends Product {
    }
 
    public function isValid(){
-        if($this->receiver->isValid() && $this->product->isValid() && $this->BeginningDate < date('Y-m-d') && date('Y-m-d') < $this->EndingDate){
+        if($this->receiver->isValid() && $this->product->isValid() && $this->BeginningDate < $this->EndingDate){
             return 1;
         }
         else{
