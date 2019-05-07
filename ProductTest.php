@@ -1,6 +1,8 @@
 <?php
 
 require 'Product.php';
+require_once 'User.php';
+
 require './vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
@@ -35,4 +37,10 @@ class ProductTest extends TestCase
         $this->assertEquals(0, $product->isValid(), "Email invalide");
     }
 
+    public function productMock($valid){
+        $productmock = $this->createMock(Product::class);
+        $productmock->method('isValid')
+        ->willReturn($valid);
+        return $productmock;
+    }
 }

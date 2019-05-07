@@ -39,5 +39,12 @@ class UserTest extends TestCase
 		$user = new User("Am", "Ripoll", "amandine-ripoll@blabla.fr", 12);
 		$this->assertEquals(0, $user->isValid(), "Age invalide");
 	}
+	
 
+	public function userMock($valid){
+        $usermock = $this->createMock(User::class);
+        $usermock->method('isValid')
+        ->willReturn($valid);
+        return $usermock;
+	}
 }

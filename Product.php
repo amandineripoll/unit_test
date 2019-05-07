@@ -1,8 +1,7 @@
 <?php
 
-require 'User.php';
 
-class Product extends User {
+class Product {
 
     protected $name;
     protected $user;
@@ -38,8 +37,3 @@ class Product extends User {
             }
         }
 }
-
-$user = new User("dd", "dd", "amadddm@ail.r", 15);
-//print $user->isValid();
-$product = new Product("chaise", $user);
-print $product->isValid();

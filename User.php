@@ -42,7 +42,9 @@ class User {
         if(isValid()){
             DBConnection::saveUser($this);
             }
-        }
+    }
+    
+    
 }
 
 //$user = new User("dd", "dd", "amadddmail.r", 15);

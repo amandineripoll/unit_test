@@ -1,10 +1,9 @@
 <?php
 
-require 'Product.php';
 require 'EmailSender.php';
 require 'DBConnection.php';
 
-class Exchange extends Product {
+class Exchange {
 
     protected  $receiver;
     protected  $product;
