@@ -37,9 +37,11 @@ class Product extends User {
             DBConnection::saveProduct($this);
             }
         }
-}
 
-$user = new User("dd", "dd", "amadddm@ail.r", 15);
-//print $user->isValid();
-$product = new Product("chaise", $user);
-print $product->isValid();
+    public static function productMock($valid){
+        $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
+        $product->method('isValid')
+        ->willReturn($valid);
+        return $product;
+    }
+}

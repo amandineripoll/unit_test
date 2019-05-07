@@ -69,4 +69,11 @@ class Exchange extends Product {
             }
         }
     }
+
+    public function exchangeMock($valid){
+        $exchange = $this->getMockBuilder(Exchange::class)->disableOriginalConstructor()->getMock();
+        $exchange->method('isValid')
+        ->willReturn($valid);
+        return $exchange;
+    }
 }
