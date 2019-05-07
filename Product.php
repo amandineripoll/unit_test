@@ -32,6 +32,11 @@ class Product extends User {
             return 0;
     }
     
+    public function save(){
+        if(isValid()){
+            DBConnection::saveProduct($this);
+            }
+        }
 }
 
 $user = new User("dd", "dd", "amadddm@ail.r", 15);

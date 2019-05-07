@@ -37,6 +37,12 @@ class User {
         else
             return 0;
     }
+
+    public function save(){
+        if(isValid()){
+            DBConnection::saveUser($this);
+            }
+        }
 }
 
 //$user = new User("dd", "dd", "amadddmail.r", 15);

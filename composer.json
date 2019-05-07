@@ -1,5 +1,10 @@
 {
-    "require-dev": {
-        "phpunit/phpunit": "^8"
-    }
+    "name": "leo/unit_test",
+    "authors": [
+        {
+            "name": "Leo Wattier",
+            "email": "leo.wattier@free.fr"
+        }
+    ],
+    "require": {}
 }
