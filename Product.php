@@ -1,8 +1,7 @@
 <?php
 
-require 'User.php';
 
-class Product extends User {
+class Product  {
 
     protected $name;
     protected $user;
@@ -37,11 +36,4 @@ class Product extends User {
             DBConnection::saveProduct($this);
             }
         }
-
-    public static function productMock($valid){
-        $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
-        $product->method('isValid')
-        ->willReturn($valid);
-        return $product;
-    }
 }

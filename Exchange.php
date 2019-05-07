@@ -1,10 +1,9 @@
 <?php
 
-require 'Product.php';
 require 'EmailSender.php';
 require 'DBConnection.php';
 
-class Exchange extends Product {
+class Exchange {
 
     protected  $receiver;
     protected  $product;
@@ -68,12 +67,5 @@ class Exchange extends Product {
                 echo $e;
             }
         }
-    }
-
-    public function exchangeMock($valid){
-        $exchange = $this->getMockBuilder(Exchange::class)->disableOriginalConstructor()->getMock();
-        $exchange->method('isValid')
-        ->willReturn($valid);
-        return $exchange;
     }
 }

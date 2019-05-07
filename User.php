@@ -43,13 +43,6 @@ class User {
             DBConnection::saveUser($this);
             }
     }
-
-    public function userMock($valid){
-        $user = $this->getMockBuilder(User::class)->disableOriginalConstructor()->getMock();
-        $user->method('isValid')
-        ->willReturn($valid);
-        return $user;
-    }
     
     
 }
