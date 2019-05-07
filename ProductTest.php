@@ -1,6 +1,8 @@
 <?php
 
 require 'Product.php';
+require_once 'User.php';
+
 require './vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;

@@ -1,7 +1,7 @@
 <?php
 
 
-class Product  {
+class Product {
 
     protected $name;
     protected $user;
